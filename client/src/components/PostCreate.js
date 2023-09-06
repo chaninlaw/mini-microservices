@@ -1,13 +1,14 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-const PostCreate = () => {
+const PostCreate = ({setFetch}) => {
   const [title, setTitle] = useState('')
 
   const onSubmit = async (e) => {
     e.preventDefault()
     await axios.post('http://localhost:4000/posts', { title })
     setTitle('')
+    setFetch(prev => !prev)
   }
 
   return (

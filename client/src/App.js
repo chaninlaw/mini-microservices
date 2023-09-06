@@ -3,13 +3,14 @@ import PostCreate from './components/PostCreate'
 import PostList from './components/PostList'
 
 const App = () => {
+  const [fetch, setFetch] = useState(false)
 
   return (
     <div className='container'>
       <h1>Blog Post</h1>
-      <PostCreate />
+      <PostCreate setFetch={setFetch} />
       <hr />
-      <PostList />
+      <PostList rerender={fetch} />
     </div>
   )
 }

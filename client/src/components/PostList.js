@@ -3,7 +3,7 @@ import axios from 'axios'
 import CommentCreate from './CommentCreate'
 import CommentList from './CommentList'
 
-const PostList = () => {
+const PostList = ({rerender}) => {
   const [posts, setPosts] = useState({})
   const [fetch, setFetch] = useState(false)
 
@@ -14,7 +14,7 @@ const PostList = () => {
 
   useEffect(() => {
     fetchPost()
-  }, [fetch])
+  }, [fetch, rerender])
 
   const renderedPost = Object.values(posts).map((post) => {
     return (
