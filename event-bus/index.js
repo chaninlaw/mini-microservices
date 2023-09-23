@@ -14,7 +14,7 @@ app.post('/events', (req, res) => {
   events.push(event)
 
   axois
-    .post(`${postsURL}events`, event)
+    .post(`${postsURL}/events`, event)
     .catch((err) => console.log(err))
   // axois
   //   .post('http://localhost:4001/events', event)
