@@ -7,6 +7,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+const eventBusURL = 'http://event-bus-srv:4005'
+
 const posts = {}
 
 app.get('/posts', (req, res) => {
@@ -22,7 +24,7 @@ app.post('/posts', async (req, res) => {
     title
   }
 
-  await axios.post('http://localhost:4005/events', {
+  await axios.post(`${eventBusURL}/events`, {
     type: 'PostCreated',
     data: {
       id,
