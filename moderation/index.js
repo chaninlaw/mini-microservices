@@ -4,13 +4,15 @@ const axios = require('axios')
 const app = express()
 app.use(express.json())
 
+const eventBusURL = 'http://event-bus-srv:4005'
+
 app.post('/events', async (req, res) => {
   const { type, data } = req.body
 
   if (type === 'CommentCreated') {
     const status = data.content.includes('orange') ? 'rejected' : 'approved'
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post(`${eventBusURL}/events`, {
       type: 'CommentModerated',
       data: {
         id: data.id,

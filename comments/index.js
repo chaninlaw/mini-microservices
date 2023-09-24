@@ -7,6 +7,8 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+const eventBusURL = 'http://event-bus-srv:4005'
+
 const commentsByPostId = {}
 
 app.get('/posts/:id/comments', (req, res) => {
@@ -23,7 +25,7 @@ app.post('/posts/:id/comments', async (req, res) => {
 
   commentsByPostId[req.params.id] = comments
 
-  await axios.post('http://localhost:4005/events', {
+  await axios.post(`${eventBusURL}/events`, {
     type: 'CommentCreated',
     data: {
       id,
@@ -46,7 +48,7 @@ app.post('/events', async (req, res) => {
     const comment = comments.find((comment) => comment.id === id)
     comment.status = status
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post(`${eventBusURL}/events`, {
       type: 'CommentUpdated',
       data: {
         id,
