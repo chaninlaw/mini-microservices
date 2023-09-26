@@ -7,7 +7,7 @@ const CommentCreate = ({ postId, setFetch }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post(`http://localhost:4001/posts/${postId}/comments`, {
+      await axios.post(`http://posts.com/posts/${postId}/comments`, {
         content,
       })
       setContent('')
