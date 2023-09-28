@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PostCreate from './components/PostCreate'
 import PostList from './components/PostList'
 

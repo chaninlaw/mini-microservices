@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: chaninlaw/client
+    container_name: client
+    ports:
+      - 3000:3000
+    networks:
+      - client
+networks:
+  client:
+    driver: bridge

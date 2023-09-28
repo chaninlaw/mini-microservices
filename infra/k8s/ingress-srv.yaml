@@ -9,14 +9,14 @@ spec:
     http:
       paths:
       - path: /posts/create
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: posts-clusterip-srv
             port: 
               number: 4000
       - path: /posts
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: query-srv
