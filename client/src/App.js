@@ -7,7 +7,7 @@ const App = () => {
 
   return (
     <div className='container'>
-      <h1>Blog Post</h1>
+      <h1>Blog Post by ninja</h1>
       <PostCreate setFetch={setFetch} />
       <hr />
       <PostList rerender={fetch} />
